@@ -39,9 +39,10 @@ export class App extends Component {
         }}
       >
         <Searchbar onSubmit={this.handleFormSubmit} />
+
         <ImageGallery
           photoTag={photoTag}
-          onImageClick={this.handlePhotoClick}
+          onPhotoClick={this.handlePhotoClick}
         />
         {showModal && <Modal src={src} alt={alt} onClose={this.toggleModal} />}
       </div>

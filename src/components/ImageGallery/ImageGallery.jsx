@@ -35,13 +35,13 @@ export class ImageGallery extends Component {
 
       fetchImg(nextSearch, nextPage).then(({ hits, totalHits }) => {
         if (hits.length === 0) {
-          alert(`Sorry, no images`);
+          alert(`Sorry, there is no photo at your request `);
           this.setState({ loading: false });
           return;
         }
 
         if (hits.length === 0 && totalHits !== 0) {
-          alert(`End of results`);
+          alert(`End of search results`);
           this.setState({ loading: false });
           return;
         }
@@ -54,6 +54,7 @@ export class ImageGallery extends Component {
             tags,
           })
         );
+
         this.setState(({ photos }) => ({
           photos: [...photos, ...newPhotos],
           loading: false,
@@ -71,7 +72,7 @@ export class ImageGallery extends Component {
           <ul className={css.gallery}>
             {photos.map(({ id, webformatURL, tags }) => (
               <ImageGalleryItem
-                onClick={this.props.onImageClick}
+                onClick={this.props.onPhotoClick}
                 key={id}
                 id={id}
                 src={webformatURL}
